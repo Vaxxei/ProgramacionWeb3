@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tipos de Layout</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        background: #fafafa;
+        padding: 20px;
+        line-height: 1.5;
+      }
+      section {
+        margin-bottom: 40px;
+        padding: 20px;
+        background: #fff;
+        border: 1px solid #ccc;
+      }
+      h2 {
+        margin-bottom: 10px;
+        text-align: center;
+        background: #eee;
+        padding: 10px;
+      }
+
+      /* layout basico */
+      .layout-basico header,
+      .layout-basico main,
+      .layout-basico footer {
+        padding: 1em;
+        text-align: center;
+      }
+      .layout-basico header {
+        background: #f8f8f8;
+      }
+      .layout-basico footer {
+        background: #f8f8f8;
+      }
+
+      /* layout con barra lateral */
+      .layout-barra-lateral header,
+      .layout-barra-lateral footer {
+        background: #f8f8f8;
+        padding: 1em;
+        text-align: center;
+      }
+      .layout-barra-lateral .content {
+        display: flex;
+        flex: 1;
+      }
+      .layout-barra-lateral nav {
+        width: 200px;
+        background: #ddd;
+        padding: 1em;
+      }
+      .layout-barra-lateral main {
+        flex: 1;
+        padding: 1em;
+      }
+
+      /* layout grid */
+      .layout-grid .grid-container {
+        display: grid;
+        grid-template-areas:
+          "header header header"
+          "nav main aside"
+          "footer footer footer";
+        grid-template-columns: 200px 1fr 200px;
+        grid-template-rows: auto 1fr auto;
+        min-height: 300px;
+      }
+      .layout-grid header {
+        grid-area: header;
+        background: #f8f8f8;
+        padding: 1em;
+        text-align: center;
+      }
+      .layout-grid nav {
+        grid-area: nav;
+        background: #ddd;
+        padding: 1em;
+      }
+      .layout-grid main {
+        grid-area: main;
+        padding: 1em;
+      }
+      .layout-grid aside {
+        grid-area: aside;
+        background: #eee;
+        padding: 1em;
+      }
+      .layout-grid footer {
+        grid-area: footer;
+        background: #f8f8f8;
+        padding: 1em;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="layout-basico">
+      <h2>LAYOUT BASICO</h2>
+      <header>
+        <h1>Brian Sanchez</h1>
+      </header>
+      <main>
+        <p>Contenido</p>
+      </main>
+      <footer>
+        <p>Pie Pagina</p>
+      </footer>
+    </section>
+    <section class="layout-barra-lateral">
+      <h2>LAYOUT BARRA LATERAL</h2>
+      <header>
+        <h1>Brian Sanchez </h1>
+      </header>
+      <div class="content">
+        <nav>
+          <ul>
+            <li>O1</li>
+            <li>02</li>
+            <li>03</li>
+          </ul>
+        </nav>
+        <main>
+          <p>ContenidO.</p>
+        </main>
+      </div>
+      <footer>
+        <p>Pie página</p>
+      </footer>
+    </section>
+    <section class="layout-grid">
+      <h2>LAYOUT GRID</h2>
+      <div class="grid-container">
+        <header>
+          <h1>Brian Sanchez</h1>
+        </header>
+        <nav>
+          <ul>
+            <li>M1</li>
+            <li>M2</li>
+            <li>M3</li>
+          </ul>
+        </nav>
+        <main>
+          <p>Contenido.</p>
+        </main>
+        <aside>
+          <p>Información adicional.</p>
+        </aside>
+        <footer>
+          <p>Pie página</p>
+        </footer>
+      </div>
+    </section>
+  </body>
+</html>
