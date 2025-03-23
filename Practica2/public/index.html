@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>TestBD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>Pruebas de diferentes conexiones MySql</h1>
+      <p>Brian Rafael Sánchez Yujra</p>
+    </header>
+
+    <main>
+      <section class="content">
+        <h2>Prueba de Conexiones</h2>
+        <div class="buttons">
+          <button class="button" onclick="runTest('basic')">Conexión Básica</button>
+          <button class="button" onclick="runTest('promise')">Conexión con Promesas</button>
+          <button class="button" onclick="runTest('pool')">Conexión con Pooling</button>
+        </div>
+        <div id="results"></div>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    async function runTest(method) {
+      const resultsDiv = document.getElementById('results');
+      resultsDiv.innerHTML = `<p>Ejecutando método: ${method}...</p>`;
+      try {
+        const response = await fetch(`/${method}`);
+        const result = await response.json();
+        resultsDiv.innerHTML = `
+          <p>Tiempo de ejecución: ${result.timeMs} ms</p>
+          <pre>${JSON.stringify(result.data, null, 2)}</pre>`;
+      } catch (error) {
+        resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
